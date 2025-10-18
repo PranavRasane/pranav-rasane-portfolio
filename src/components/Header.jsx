@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 
 const Header = () => {
   return (
-    <section className="flex min-h-screen flex-wrap items-center">
+    <section className="flex min-h-screen flex-wrap items-center pt-20 lg:pt-0">
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="w-full md:w-1/2"
+        className="w-full md:w-1/2 mt-8 lg:mt-0"
       >
         <h2 className="my-8 p-2 text-4xl font-black md:text-5xl lg:text-[7rem] font-roboto-serif">
           {HERO.name}
