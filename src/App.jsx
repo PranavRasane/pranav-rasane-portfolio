@@ -83,59 +83,31 @@ const App = () => {
 
   return (
     <div className="relative min-h-screen overflow-y-auto antialiased scroll-smooth">
-      {/* Floating AI Icons Background */}
+      {/* Background with Only Binary Rainfall */}
       <div className="fixed inset-0 bg-black overflow-hidden">
-        {/* Floating AI Icons - Almost Invisible */}
+        {/* Enhanced Binary Rain Effect */}
         <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(100)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute text-gray-900/20 text-lg" // Almost invisible - 20% opacity
+              className="absolute text-green-400/60 text-sm font-mono z-0"
               style={{
                 left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
               }}
               animate={{
-                y: [0, -15, 0],
-                rotate: [0, 45, 0],
+                y: [-100, window.innerHeight + 100],
+                opacity: [0, 0.8, 0],
               }}
               transition={{
-                duration: 20 + Math.random() * 20,
+                duration: 6 + Math.random() * 12,
                 repeat: Infinity,
+                delay: Math.random() * 5,
                 ease: 'linear',
               }}
             >
-              {['🤖', '🧠', '🔍', '📊', '⚡', '🔬', '💡', '🌐'][i % 8]}
+              {Math.random() > 0.5 ? '1' : '0'}
             </motion.div>
           ))}
-        </div>
-
-        {/* Binary Rain Effect - More Visible */}
-        <div className="absolute inset-0">
-          {[...Array(80)].map(
-            (
-              _,
-              i // Increased from 50 to 80
-            ) => (
-              <motion.div
-                key={i}
-                className="absolute text-green-400 text-sm font-mono opacity-40 z-0" // Increased opacity and text size
-                style={{
-                  left: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [-100, window.innerHeight + 100],
-                }}
-                transition={{
-                  duration: 8 + Math.random() * 15, // Faster animation
-                  repeat: Infinity,
-                  delay: Math.random() * 3,
-                }}
-              >
-                {Math.random() > 0.5 ? '1' : '0'}
-              </motion.div>
-            )
-          )}
         </div>
       </div>
 
