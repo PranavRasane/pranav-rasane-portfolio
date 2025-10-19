@@ -85,23 +85,22 @@ const App = () => {
     <div className="relative min-h-screen overflow-y-auto antialiased scroll-smooth">
       {/* Floating AI Icons Background */}
       <div className="fixed inset-0 bg-black overflow-hidden">
-        {/* Floating AI Icons */}
+        {/* Floating AI Icons - Almost Invisible */}
         <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute text-gray-500 text-2xl"
+              className="absolute text-gray-900/20 text-lg" // Almost invisible - 20% opacity
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                y: [0, -30, 0],
-                x: [0, Math.random() * 20 - 10, 0],
-                rotate: [0, 180, 360],
+                y: [0, -15, 0],
+                rotate: [0, 45, 0],
               }}
               transition={{
-                duration: 10 + Math.random() * 10,
+                duration: 20 + Math.random() * 20,
                 repeat: Infinity,
                 ease: 'linear',
               }}
@@ -111,27 +110,32 @@ const App = () => {
           ))}
         </div>
 
-        {/* Binary Rain Effect */}
+        {/* Binary Rain Effect - More Visible */}
         <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-green-400 text-xs font-mono opacity-20 z-0"
-              style={{
-                left: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [-100, window.innerHeight + 100],
-              }}
-              transition={{
-                duration: 10 + Math.random() * 20,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-              }}
-            >
-              {Math.random() > 0.5 ? '1' : '0'}
-            </motion.div>
-          ))}
+          {[...Array(80)].map(
+            (
+              _,
+              i // Increased from 50 to 80
+            ) => (
+              <motion.div
+                key={i}
+                className="absolute text-green-400 text-sm font-mono opacity-40 z-0" // Increased opacity and text size
+                style={{
+                  left: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [-100, window.innerHeight + 100],
+                }}
+                transition={{
+                  duration: 8 + Math.random() * 15, // Faster animation
+                  repeat: Infinity,
+                  delay: Math.random() * 3,
+                }}
+              >
+                {Math.random() > 0.5 ? '1' : '0'}
+              </motion.div>
+            )
+          )}
         </div>
       </div>
 

@@ -34,7 +34,7 @@ const Header = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="w-full md:w-1/2 lg:p-8 relative"
+        className="w-full md:w-1/2 lg:p-8 relative mt-16 lg:mt-2"
       >
         <div className="flex justify-center relative">
           {/* Your Photo with White Background */}
@@ -69,7 +69,6 @@ const Header = () => {
             { text: 'Python', x: '75%', y: '65%', delay: 1.1 },
             { text: 'React', x: '15%', y: '50%', delay: 2.8 },
             { text: 'TensorFlow', x: '80%', y: '25%', delay: 1.9 },
-            { text: 'PyTorch', x: '25%', y: '85%', delay: 0.7 },
             { text: 'JavaScript', x: '70%', y: '15%', delay: 3.5 },
           ].map((snippet, i) => (
             <motion.div
