@@ -39,7 +39,7 @@ const Header = () => {
         <div className="flex justify-center relative">
           {/* Your Photo with White Background */}
           <motion.img
-            src="/public/animated-PP.jpeg"
+            src="/public/animated-PP.png"
             width={500}
             height={500}
             alt="Pranav Rasane"
