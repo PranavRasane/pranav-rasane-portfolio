@@ -137,14 +137,14 @@ const Navbar = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="bg-black/90 border-t border-white/10 rounded-b-2xl overflow-hidden"
+                className="bg-black/90 border-t border-white/10 overflow-hidden rounded-none"
               >
                 <div className="px-4 py-4 space-y-3">
                   {NAVIGATION_LINKS.map((link) => (
                     <button
                       key={link.href}
                       onClick={() => handleMobileNavClick(link.href)}
-                      className={`block w-full text-left py-3 px-4 rounded-lg text-sm transition-all duration-200 ${
+                      className={`block w-full text-left py-3 px-4 rounded-none text-sm transition-all duration-200 ${
                         activeSection === link.href.substring(1)
                           ? 'text-white bg-white/10'
                           : 'text-gray-400 hover:text-white hover:bg-white/5'

@@ -461,12 +461,39 @@ body {
   transform: translateY(-1px);
 }
 
-/* Mobile Menu Button - Completely clean */
+/* Mobile Menu Styles - Clean without circles */
+@media (max-width: 768px) {
+  .portfolio-glass-effect {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+
+  /* Mobile menu items - clean flat design */
+  .mobile-menu-item {
+    transition: all 0.2s ease;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+
+  .mobile-menu-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    transform: none !important;
+  }
+
+  /* Active state - subtle without circles */
+  [class*='bg-white/10'] {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Clean button styles - no circles */
 button {
   background: none !important;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 button:focus {
@@ -477,14 +504,6 @@ button:focus {
 button:hover {
   background: none !important;
   transform: none !important;
-}
-
-/* Mobile specific */
-@media (max-width: 768px) {
-  .portfolio-glass-effect {
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(20px) !important;
-  }
 }
 
 /* Smooth hide/show animation */
