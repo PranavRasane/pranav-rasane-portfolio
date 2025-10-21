@@ -1,24 +1,10 @@
 import { PROJECTS } from '../constants/index'
-import { MdArrowOutward } from 'react-icons/md'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Project = () => {
-  // Updated descriptions for better mobile display
-  const updatedProjects = PROJECTS.map((project) => {
-    if (project.id === 2) {
-      // Autonomous Drone
-      return {
-        ...project,
-        description:
-          'GPS-enabled drone with real-time fire, smoke, and crowd detection using YOLOv8 on Raspberry Pi. Features IoT-based data communication for intelligent surveillance and proactive alerts.',
-      }
-    }
-    return project
-  })
-
   return (
     <section className="pt-15 mb-6" id="projects">
-      {/* Animated Projects Title */}
       <motion.h2
         className="mb-8 text-center text-3xl lg:text-4xl font-bold text-white"
         initial={{ opacity: 0 }}
@@ -29,63 +15,58 @@ const Project = () => {
       </motion.h2>
 
       <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2 lg:grid-cols-2">
-        {/* Loop over Updated Projects */}
-        {updatedProjects.map((project, index) => (
+        {PROJECTS.map((project, index) => (
           <motion.div
             key={project.id}
-            className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer project-card"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.6 }}
+            whileHover={{ scale: 1.02 }}
           >
-            <div className="relative w-full h-56 md:h-64 lg:h-72">
-              {/* Animated Image */}
-              <motion.img
-                src={project.image}
-                alt={project.name}
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 group-hover:brightness-90"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-              />
-            </div>
+            <Link to={`/project/${project.id}`} className="block w-full h-full">
+              <div className="relative w-full h-56 md:h-64 lg:h-72">
+                <motion.img
+                  src={project.image}
+                  alt={project.name}
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100 p-4">
-              {/* Project Name - Mobile Responsive */}
-              <h3
-                className={`mb-3 text-lg md:text-xl font-semibold text-center px-2 ${
-                  project.id === 1 || project.id === 4
-                    ? 'text-black'
-                    : 'text-white'
-                }`}
-              >
-                {project.name}
-              </h3>
-
-              {/* Project Description - Mobile Responsive */}
-              <p
-                className={`mb-8 md:mb-12 text-sm md:text-base text-center px-2 leading-tight md:leading-relaxed ${
-                  project.id === 1 || project.id === 4
-                    ? 'text-black'
-                    : 'text-white'
-                }`}
-              >
-                {project.description}
-              </p>
-
-              {/* GitHub Button - Mobile Responsive */}
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-white px-4 py-2 text-black hover:bg-gray-300 transition-colors duration-200 text-sm md:text-base"
-              >
-                <div className="flex items-center space-x-2">
-                  <span>View on GitHub</span>
-                  <MdArrowOutward className="text-sm md:text-base" />
+                {/* Project Icon */}
+                <div className="absolute top-4 left-4 text-2xl opacity-80">
+                  {project.theme?.icon || '🚀'}
                 </div>
-              </a>
-            </div>
+              </div>
+
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-opacity duration-300 p-6 bg-black/60">
+                <h3 className="mb-3 text-xl font-semibold text-center text-white">
+                  {project.name}
+                </h3>
+                <p className="mb-6 text-sm text-center text-white leading-tight line-clamp-3">
+                  {project.shortDescription || project.description}
+                </p>
+
+                <div className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                  View Case Study
+                </div>
+              </div>
+
+              {/* Default visible content */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {project.name.split('—')[0].trim()}
+                </h3>
+                <p className="text-gray-300 text-sm">
+                  Click to explore case study
+                </p>
+              </div>
+            </Link>
           </motion.div>
         ))}
       </div>

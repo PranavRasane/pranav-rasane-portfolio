@@ -236,3 +236,258 @@ body {
 .font-roboto-serif {
   font-family: 'Roboto Serif', serif;
 }
+
+/* Enhanced Project Theme Backgrounds - Black Dominant */
+.agropredict-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.9) 25%,
+    rgba(6, 78, 59, 0.7) 50%,
+    rgba(16, 185, 129, 0.5) 75%,
+    rgba(5, 150, 105, 0.3) 100%
+  );
+  position: relative;
+}
+
+.agropredict-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(34, 197, 94, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(16, 185, 129, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(5, 150, 105, 0.08) 0%,
+      transparent 50%
+    ),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.drone-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.9) 25%,
+    rgba(30, 58, 138, 0.7) 50%,
+    rgba(59, 130, 246, 0.5) 75%,
+    rgba(6, 182, 212, 0.3) 100%
+  );
+  position: relative;
+}
+
+.drone-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(59, 130, 246, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(6, 182, 212, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(79, 70, 229, 0.1) 0%,
+      transparent 70%
+    ),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.resume-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.9) 25%,
+    rgba(76, 29, 149, 0.7) 50%,
+    rgba(139, 92, 246, 0.5) 75%,
+    rgba(192, 132, 252, 0.3) 100%
+  );
+  position: relative;
+}
+
+.resume-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(139, 92, 246, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(192, 132, 252, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(217, 70, 239, 0.1) 0%,
+      transparent 70%
+    ),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.loan-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.9) 25%,
+    rgba(154, 52, 18, 0.7) 50%,
+    rgba(234, 88, 12, 0.5) 75%,
+    rgba(251, 146, 60, 0.3) 100%
+  );
+  position: relative;
+}
+
+.loan-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 25% 25%,
+      rgba(234, 88, 12, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(251, 146, 60, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(250, 204, 21, 0.1) 0%,
+      transparent 70%
+    ),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Enhanced glow effects */
+.green-glow {
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.blue-glow {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.purple-glow {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.orange-glow {
+  box-shadow: 0 0 25px rgba(251, 146, 60, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.green-glow:hover {
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.6);
+}
+.blue-glow:hover {
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.6);
+}
+.purple-glow:hover {
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
+}
+.orange-glow:hover {
+  box-shadow: 0 0 35px rgba(251, 146, 60, 0.6);
+}
+
+/* Portfolio Glass Effect */
+.portfolio-glass-effect {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Portfolio Navigation Links */
+.portfolio-nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.portfolio-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.portfolio-nav-link:hover::after,
+.portfolio-nav-link.text-white::after {
+  width: 100%;
+}
+
+.portfolio-nav-link:hover {
+  transform: translateY(-1px);
+}
+
+/* Mobile Menu Button - Completely clean */
+button {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button:hover {
+  background: none !important;
+  transform: none !important;
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+  .portfolio-glass-effect {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+}
+
+/* Smooth hide/show animation */
+nav {
+  transition: all 0.3s ease-in-out;
+}

@@ -1,36 +1,36 @@
 import { useState, useEffect } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { NAVIGATION_LINKS } from '../constants/index'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const NAVIGATION_LINK = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Profile', href: '#bio' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Work Exp', href: '#work' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-]
-
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true)
 
-  // Hide navbar on scroll down, show on scroll up
   useEffect(() => {
     const handleScroll = () => {
+      const sections = NAVIGATION_LINKS.map((link) => link.href.substring(1))
+      const current = sections.find((section) => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
+      })
+      setActiveSection(current || '')
+
+      // Hide navbar completely on scroll down, show on scroll up
       const currentScrollY = window.scrollY
-
-      if (currentScrollY < 100) {
-        setIsNavbarVisible(true)
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsNavbarVisible(false)
-        setIsMobileMenuOpen(false)
-      } else {
-        setIsNavbarVisible(true)
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Scrolling down - hide completely
+        setIsVisible(false)
+        setIsMenuOpen(false) // Also close menu when hiding
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show
+        setIsVisible(true)
       }
-
       setLastScrollY(currentScrollY)
     }
 
@@ -38,156 +38,128 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
 
-  // Update active section on scroll
-  useEffect(() => {
-    const handleActiveSection = () => {
-      const sections = NAVIGATION_LINK.map((link) =>
-        document.querySelector(
-          link.href.startsWith('#') ? link.href : `#${link.href}`
-        )
-      ).filter(Boolean)
+  // Function to handle mobile navigation
+  const handleMobileNavClick = (href) => {
+    setIsMenuOpen(false)
 
-      const scrollY = window.scrollY + 100
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.clientHeight
-        const sectionId = section.getAttribute('id')
-
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          setActiveSection(sectionId)
-        }
-      })
-    }
-
-    window.addEventListener('scroll', handleActiveSection)
-    return () => window.removeEventListener('scroll', handleActiveSection)
-  }, [])
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
-
-  const handleLinkClick = (e, href) => {
-    e.preventDefault()
-    const targetElement = document.querySelector(
-      href.startsWith('#') ? href : `#${href}`
-    )
-    if (targetElement) {
-      const offset = -85
-      const elementPosition = targetElement.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.scrollY + offset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      })
-    }
-    setIsMobileMenuOpen(false)
+    // Smooth scroll to section
+    setTimeout(() => {
+      const targetId = href.substring(1)
+      const targetElement = document.getElementById(targetId)
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    }, 100)
   }
 
   return (
-    <div>
+    <>
+      {/* Desktop Navigation */}
       <motion.nav
-        className="fixed left-0 right-0 top-0 z-50 transition-transform duration-300"
+        className="fixed top-6 left-0 right-0 z-50 hidden md:flex items-center justify-center"
         initial={{ y: 0 }}
+        animate={{ y: isVisible ? 0 : -100 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        <div className="portfolio-glass-effect rounded-full border border-white/10 px-8 py-4">
+          <div className="flex items-center space-x-8">
+            {NAVIGATION_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`portfolio-nav-link text-sm font-medium transition-all duration-300 ${
+                  activeSection === link.href.substring(1)
+                    ? 'text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Navigation - Completely disappears on scroll down */}
+      <motion.nav
+        className="fixed top-6 left-0 right-0 z-50 flex md:hidden items-center justify-center mx-4"
+        initial={{ y: 0, opacity: 1 }}
         animate={{
-          y: isNavbarVisible ? 0 : -100,
+          y: isVisible ? 0 : -100,
+          opacity: isVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        {/* Desktop Navigation */}
-        <motion.div
-          className="mx-auto hidden max-w-2xl items-center justify-center rounded-2xl glass-effect border border-gray-600/30 py-3 backdrop-blur-xl lg:flex"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <ul className="flex items-center gap-3">
-            {NAVIGATION_LINK.map((item, index) => {
-              const sectionId = item.href.replace('#', '')
-              const isActive = activeSection === sectionId
-
-              return (
-                <li key={index}>
-                  <a
-                    className={`relative px-3 py-2 text-sm font-semibold transition-all duration-200 rounded-lg whitespace-nowrap min-w-[60px] text-center ${
-                      isActive
-                        ? 'text-white bg-white/20 shadow-lg border border-white/30'
-                        : 'text-gray-300 hover:text-white hover:bg-white/10 border border-transparent'
-                    }`}
-                    href={item.href}
-                    onClick={(e) => handleLinkClick(e, item.href)}
-                  >
-                    {item.label}
-                    {isActive && (
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full" />
-                    )}
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
-        </motion.div>
-
-        {/* Mobile Navigation - Clean without "Navigation" text */}
-        <div className="lg:hidden">
-          <motion.div
-            className="rounded-2xl glass-effect border border-gray-600/30 backdrop-blur-xl mx-4 mt-4"
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center justify-end p-3">
-              {' '}
-              {/* Changed to justify-end and reduced padding */}
-              <button
-                className="p-2 text-gray-300 hover:text-white transition-colors duration-200 rounded-lg hover:bg-gray-700/50"
-                onClick={toggleMobileMenu}
-              >
-                {isMobileMenuOpen ? (
-                  <FaTimes className="h-6 w-6" />
-                ) : (
-                  <FaBars className="h-6 w-6" />
-                )}
-              </button>
+        <div className="portfolio-glass-effect rounded-full border border-white/10 w-full max-w-sm">
+          <div className="flex items-center justify-between py-4 px-6">
+            {/* Logo */}
+            <div className="flex items-center">
+              <img
+                src="/PR_logo.jpg"
+                alt="PR Logo"
+                className="h-8 w-8 rounded-full object-cover"
+              />
             </div>
 
-            <AnimatePresence>
-              {isMobileMenuOpen && (
-                <motion.ul
-                  className="flex flex-col gap-2 p-4 bg-gray-900/95 backdrop-blur-xl border-t border-gray-600/30 rounded-b-2xl"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {NAVIGATION_LINK.map((item, index) => {
-                    const sectionId = item.href.replace('#', '')
-                    const isActive = activeSection === sectionId
+            {/* Simple Hamburger Menu - No effects, just click */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white p-1"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span
+                  className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                    isMenuOpen ? 'rotate-45 translate-y-0.5' : '-translate-y-1'
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-0' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-6 bg-white transition-all duration-300 ${
+                    isMenuOpen ? '-rotate-45 -translate-y-0.5' : 'translate-y-1'
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
 
-                    return (
-                      <li key={index}>
-                        <a
-                          className={`block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-150 ${
-                            isActive
-                              ? 'text-white bg-blue-500/20 border-l-4 border-blue-400'
-                              : 'text-gray-300 hover:text-white hover:bg-white/10'
-                          }`}
-                          href={item.href}
-                          onClick={(e) => handleLinkClick(e, item.href)}
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    )
-                  })}
-                </motion.ul>
-              )}
-            </AnimatePresence>
-          </motion.div>
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-black/90 border-t border-white/10 rounded-b-2xl overflow-hidden"
+              >
+                <div className="px-4 py-4 space-y-3">
+                  {NAVIGATION_LINKS.map((link) => (
+                    <button
+                      key={link.href}
+                      onClick={() => handleMobileNavClick(link.href)}
+                      className={`block w-full text-left py-3 px-4 rounded-lg text-sm transition-all duration-200 ${
+                        activeSection === link.href.substring(1)
+                          ? 'text-white bg-white/10'
+                          : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.nav>
-    </div>
+    </>
   )
 }
 
