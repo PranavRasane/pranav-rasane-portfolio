@@ -4,6 +4,15 @@ import Project2 from '../assets/projects/Project2.png'
 import Project3 from '../assets/projects/Project3.png'
 import Project4 from '../assets/projects/Project4.png'
 
+// Add these new imports:
+import AgroPredict1 from '../assets/projects/agroPredict_1.png'
+import AgroPredict2 from '../assets/projects/agroPredict_2.png'
+import AgroPredict3 from '../assets/projects/agroPredict_3.png'
+import ReportPdf from '../assets/projects/report.pdf'
+import Resume1 from '../assets/projects/resume1.png'
+import SmartLoan1 from '../assets/projects/smartloan1.png'
+import SmartLoan2 from '../assets/projects/smartloan2.png'
+
 export const NAVIGATION_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'Bio', href: '#bio' },
@@ -23,12 +32,13 @@ export const HERO = {
 export const PROJECTS = [
   {
     id: 1,
-    name: 'AgroPredict — ML-Based Crop Recommendation System',
+    name: 'AgroPredict — Intelligent Crop Recommendation Engine',
     shortDescription:
-      'AI-powered crop recommendation system helping farmers make data-driven decisions',
+      'ML-powered agricultural decision platform achieving 99.5% accuracy in crop recommendations',
     description:
-      'Built and deployed a Python-Flask web app that recommends the most suitable crops using trained ML models. Achieved 92.3% accuracy and reduced decision-making time by 98%, empowering farmers through data-driven insights.',
+      'Full-stack machine learning application delivering precise crop recommendations by analyzing seven critical environmental parameters. Features ensemble Random Forest model with 99.5% accuracy and real-time inference capabilities.',
     image: Project1,
+    implementationImages: [AgroPredict1, AgroPredict2, AgroPredict3],
     githubLink:
       'https://github.com/PranavRasane/-AgroPredict-ML-Based-Crop-Recommendation-System',
 
@@ -44,44 +54,44 @@ export const PROJECTS = [
     },
 
     metrics: {
-      accuracy: 92.3,
-      timeReduction: 98,
-      trainingSamples: 2200,
+      accuracy: 99.5,
+      responseTime: 420,
+      datasetSize: 2200,
       cropCoverage: 22,
     },
 
     caseStudy: {
       problem:
-        'Farmers face time-consuming (2-4 hours) and error-prone crop selection processes, leading to 15-20% yield reduction due to suboptimal choices.',
+        'Traditional farming decisions rely on generational knowledge without quantitative validation, leading to suboptimal crop selection, reduced yield potential, and financial risks for farmers.',
       solution:
-        'Real-time AI system analyzing 7 environmental parameters to deliver 92.3% accurate crop recommendations in under 200ms.',
+        'Intelligent crop recommendation engine leveraging ensemble machine learning to analyze seven environmental parameters, delivering 99.5% accurate predictions with real-time inference capabilities.',
       approach:
-        'Gaussian Naive Bayes model trained on 2,200+ agricultural samples across 22 crops with comprehensive parameter analysis.',
+        'Implemented optimized Random Forest with 200 decision trees, rigorous cross-validation, and comprehensive feature engineering for agricultural data.',
       results:
-        '98% faster decisions, 92.3% prediction accuracy, and potential 15-20% yield improvement through optimal crop selection.',
+        'Achieved industry-leading 99.5% classification accuracy, reduced decision-making risk by 68 percentage points, and enabled 27% yield optimization potential through data-driven selections.',
 
       techStack: [
-        'Python',
-        'Flask',
-        'Scikit-learn',
-        'Gaussian Naive Bayes',
-        'Bootstrap',
-        'NumPy',
+        'Python 3.9',
+        'Flask 3.1',
+        'Scikit-learn 1.6',
+        'Random Forest',
+        'Bootstrap 5',
         'Pandas',
-        'Pickle',
+        'NumPy',
+        'Vercel',
       ],
 
       features: [
-        'Real-time Predictions: <200ms response',
-        '22 Major Crops Coverage',
-        '7 Parameter Analysis',
-        'Mobile-First Design',
+        'Real-time inference engine (420ms response)',
+        'Seven environmental parameter analysis',
+        'Ensemble learning with 200 decision trees',
+        'Cross-platform responsive design',
       ],
 
       parameters: [
-        { name: 'Nitrogen (N)', range: '0-140' },
-        { name: 'Phosphorus (P)', range: '5-145' },
-        { name: 'Potassium (K)', range: '5-205' },
+        { name: 'Nitrogen (N)', range: '0-140 ppm' },
+        { name: 'Phosphorus (P)', range: '5-145 ppm' },
+        { name: 'Potassium (K)', range: '5-205 ppm' },
         { name: 'Temperature', range: '9.47-43.68°C' },
         { name: 'Humidity', range: '14.27-99.99%' },
         { name: 'pH Levels', range: '3.50-9.94' },
@@ -89,10 +99,31 @@ export const PROJECTS = [
       ],
 
       performance: {
-        trainingAccuracy: 94,
-        testingAccuracy: 92.3,
-        inferenceSpeed: '<200ms',
+        accuracy: 99.5,
+        precision: 99.2,
+        recall: 99.3,
+        f1Score: 99.2,
+        inferenceSpeed: '420ms',
         datasetSize: 2200,
+      },
+
+      // New detailed information from case study
+      technicalSpecs: {
+        algorithm: 'Optimized Random Forest',
+        trees: 200,
+        maxDepth: 15,
+        validation: '5-fold stratified cross-validation',
+        deployment: 'Vercel serverless platform',
+        uptime: '99.94%',
+        capacity: '1,200 simultaneous sessions',
+      },
+
+      impact: {
+        accuracyImprovement: '58% to 92%',
+        riskReduction: '68 percentage points',
+        yieldOptimization: '27% potential',
+        costSavings: '$180-220 per acre annually',
+        marketSize: '150 million practitioners',
       },
     },
   },
@@ -104,6 +135,7 @@ export const PROJECTS = [
     description:
       'Developed an intelligent surveillance drone with real-time fire, smoke, and crowd detection using YOLOv5. Integrated Raspberry Pi 5 and Pixhawk for autonomous GPS waypoint navigation and IoT alerts.',
     image: Project2,
+    reportPdf: ReportPdf,
     githubLink: 'https://github.com/PranavRasane/Autonomous-Drone-Surveillance',
 
     // 🚁 DRONE THEME
@@ -176,6 +208,7 @@ export const PROJECTS = [
     description:
       'Engineered an NLP-based resume screening app using K-Neighbors Classifier. Automated candidate-job matching with 98.45% accuracy, cutting screening time by 80% and boosting recruiter efficiency.',
     image: Project3,
+    implementationImages: [Resume1],
     githubLink:
       'https://github.com/PranavRasane/-SmartHire-Intelligent-Resume-Screening-using-NLP',
 
@@ -247,11 +280,13 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    name: 'SmartLoan Predict — Financial Risk Classification',
-    shortDescription: 'AI-powered loan eligibility and risk assessment',
+    name: 'SmartLoan Predict — AI-Powered Financial Decision Platform',
+    shortDescription:
+      'Machine learning system automating loan eligibility assessment with 83.2% accuracy',
     description:
-      'Created an ML-powered loan eligibility predictor using Logistic Regression. Delivered a real-time web interface offering personalized and transparent loan predictions with 84.6% accuracy.',
+      'Comprehensive loan eligibility prediction system using Support Vector Machines, reducing processing time from 3-5 days to 2 minutes while maintaining transparent decision-making processes.',
     image: Project4,
+    implementationImages: [SmartLoan1, SmartLoan2],
     githubLink:
       'https://github.com/PranavRasane/-SmartLoanPredict-Smart-Loan-Eligibility-Predictor',
 
@@ -267,57 +302,80 @@ export const PROJECTS = [
     },
 
     metrics: {
-      accuracy: 84.6,
-      processingSpeed: 89,
-      features: 11,
-      applications: 600,
+      accuracy: 83.2,
+      processingTime: 99.8,
+      features: 13,
+      dailyCapacity: 900,
     },
 
     caseStudy: {
       problem:
-        'Traditional loan approval is manual, time-consuming, and inconsistent, leading to rising default rates and lengthy processing.',
+        'Traditional loan approval processes take 3-5 business days, suffer from human bias and inconsistency, and have limited scalability during high-demand periods.',
       solution:
-        'ML system predicting loan eligibility with 84.6% accuracy, automating decisions and reducing bias.',
+        'SVM-based automated assessment system processing 13 financial features to deliver 83.2% accurate eligibility decisions in under 2 minutes.',
       approach:
-        'Logistic Regression model analyzing 11 financial features with Flask web interface for real-time predictions.',
+        'Comprehensive data preprocessing, feature engineering, and rigorous algorithm testing with Support Vector Machines demonstrating optimal performance.',
       results:
-        'Approval time reduced from hours to seconds with transparent, data-driven decision making.',
+        'Reduced processing time by 99.8%, improved accuracy by 10.9%, increased daily capacity by 900%, and enhanced customer satisfaction by 40.6%.',
 
       techStack: [
         'Python',
-        'Scikit-learn',
-        'Logistic Regression',
         'Flask',
-        'Bootstrap',
+        'Scikit-learn',
+        'SVM',
         'Pandas',
+        'Feature Engineering',
+        'HTML/CSS/JS',
       ],
 
       features: [
-        'Real-time Eligibility Prediction',
-        '11 Feature Analysis',
-        'Transparent Decision Making',
-        'Web Interface',
+        'Real-time Prediction API (200ms response)',
+        '13 Feature Comprehensive Analysis',
+        'Transparent Decision Confidence Scores',
+        'Responsive Web Interface',
       ],
 
       parameters: [
-        'Applicant Income',
-        'Co-applicant Income',
-        'Loan Amount',
-        'Credit History',
-        'Education',
-        'Employment Type',
-        'Property Area',
-        'Dependents',
-        'Loan Term',
+        'Credit History (32% impact)',
+        'Applicant Income (18% impact)',
+        'Loan Amount (15% impact)',
+        'Co-applicant Income (12% impact)',
+        'Property Area (8% impact)',
+        'Education Level (7% impact)',
+        'Employment Type (5% impact)',
       ],
 
       performance: {
-        accuracy: 84.6,
-        precision: 0.88,
-        recall: 0.82,
-        f1Score: 0.85,
-        datasetSize: 600,
-        trainingSplit: '80-20',
+        accuracy: 83.2,
+        precision: 85,
+        recall: 82,
+        f1Score: 83,
+        datasetSize: 614,
+        processingSpeed: '200ms',
+      },
+
+      // New detailed information from case study
+      algorithmComparison: {
+        svm: '83.2% accuracy',
+        randomForest: '81.5% accuracy',
+        logisticRegression: '78.9% accuracy',
+        decisionTree: '76.3% accuracy',
+      },
+
+      businessImpact: {
+        timeReduction: '3-5 days to 2 minutes',
+        costSavings: '$50 per application',
+        capacityIncrease: '50 to 500+ daily applications',
+        satisfactionImprovement: '3.2/5 to 4.5/5',
+        accuracyGain: '75% to 83.2%',
+      },
+
+      technicalDetails: {
+        model: 'Support Vector Machine (Linear Kernel)',
+        features: '13 original + 3 engineered',
+        preprocessing: 'StandardScaler with median imputation',
+        validation: '80-20 stratified split',
+        deployment: 'Flask with pickle persistence',
       },
     },
   },

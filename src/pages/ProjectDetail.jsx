@@ -728,6 +728,68 @@ const ProjectDetail = () => {
               <MdArrowOutward className="text-lg" />
             </motion.a>
           </motion.div>
+
+          {/* Implementation Images/PDF Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.8 }}
+            className="mt-12"
+          >
+            <h2
+              className={`text-3xl font-bold mb-6 text-center ${theme.accent}`}
+            >
+              Implementation & Documentation
+            </h2>
+
+            {/* For projects with multiple images (AgroPredict, SmartLoan) */}
+            {project.implementationImages &&
+              project.implementationImages.length > 0 && (
+                <div className="space-y-6">
+                  {project.implementationImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      className="glass-effect rounded-2xl p-6 backdrop-blur-sm border border-white/10"
+                      whileHover={{ scale: 1.01 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.img
+                        src={image}
+                        alt={`${project.name} Implementation ${index + 1}`}
+                        className="w-full h-auto rounded-xl shadow-2xl"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+            {/* For projects with PDF report (Drone) */}
+            {project.reportPdf && (
+              <div className="glass-effect rounded-2xl p-8 backdrop-blur-sm border border-white/10 text-center">
+                <div className="text-6xl mb-4">📄</div>
+                <h3 className={`text-2xl font-bold mb-4 ${theme.accent}`}>
+                  Project Report
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Detailed documentation and analysis of the project
+                  implementation
+                </p>
+                <motion.a
+                  href={project.reportPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-white text-black rounded-xl hover:bg-gray-200 transition-colors duration-300 font-semibold"
+                >
+                  <span>View Project Report</span>
+                  <MdArrowOutward className="text-lg" />
+                </motion.a>
+              </div>
+            )}
+
+            {/* For single image projects (Resume Classifier) - already handled by implementationImages array */}
+          </motion.div>
         </motion.div>
       </div>
     </div>
