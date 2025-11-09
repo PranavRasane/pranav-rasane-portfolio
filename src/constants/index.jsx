@@ -36,7 +36,7 @@ export const PROJECTS = [
     shortDescription:
       'ML-powered agricultural decision platform achieving 99.5% accuracy in crop recommendations',
     description:
-      'Full-stack machine learning application delivering precise crop recommendations by analyzing seven critical environmental parameters. Features ensemble Gaussian Naive Bayes model with 99.5% accuracy and real-time inference capabilities.',
+      'Full-stack machine learning application delivering precise crop recommendations by analyzing seven critical environmental parameters. Features ensemble Random Forest model with 99.5% accuracy and real-time inference capabilities.',
     image: Project1,
     implementationImages: [AgroPredict1, AgroPredict2, AgroPredict3],
     githubLink:
@@ -66,7 +66,7 @@ export const PROJECTS = [
       solution:
         'Intelligent crop recommendation engine leveraging ensemble machine learning to analyze seven environmental parameters, delivering 99.5% accurate predictions with real-time inference capabilities.',
       approach:
-        'Implemented optimized Gaussian Naive Bayes with 200 decision trees, rigorous cross-validation, and comprehensive feature engineering for agricultural data.',
+        'Implemented optimized Random Forest with 200 decision trees, rigorous cross-validation, and comprehensive feature engineering for agricultural data.',
       results:
         'Achieved industry-leading 99.5% classification accuracy, reduced decision-making risk by 68 percentage points, and enabled 27% yield optimization potential through data-driven selections.',
 
@@ -74,7 +74,7 @@ export const PROJECTS = [
         'Python 3.9',
         'Flask 3.1',
         'Scikit-learn 1.6',
-        'Gaussian Naive Bayes',
+        'Random Forest',
         'Bootstrap 5',
         'Pandas',
         'NumPy',
@@ -109,7 +109,7 @@ export const PROJECTS = [
 
       // New detailed information from case study
       technicalSpecs: {
-        algorithm: 'Optimized Gaussian Naive Bayes',
+        algorithm: 'Optimized Random Forest',
         trees: 200,
         maxDepth: 15,
         validation: '5-fold stratified cross-validation',
