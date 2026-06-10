@@ -391,9 +391,22 @@ export const BIO = [
 
 export const EXPERIENCES = [
   {
+    title: 'Application Developer',
+    company: 'Indo Metaforge Pvt. Ltd.',
+    duration: 'January 2026 – April 2026',
+    website: 'https://www.indometaforge.in/',
+    description: [
+      'Developed Inventory & Production Management and HRM Payroll systems to streamline business operations.',
+      'Designed databases and supported application testing, deployment, and maintenance.',
+      'Collaborated with stakeholders to translate business requirements into software solutions.',
+      'Improved operational efficiency through automation of inventory, payroll, and workforce management processes.',
+    ],
+  },
+  {
     title: 'Co-Founder & Web Designer',
     company: 'Webonacci',
-    duration: 'July 2024 – 2025',
+    duration: 'July 2025 – January 2026',
+    website: 'https://www.webonacci.in/',
     description: [
       'Designed and delivered custom-coded and no-code websites featuring responsive UIs, integrated booking systems, and admin dashboards, enhancing client operations and user experience.',
       'Led the full project lifecycle, from requirement gathering and client consultation to deployment and post-launch support, applying Agile and SDLC methodologies to ensure timely and high-quality delivery.',

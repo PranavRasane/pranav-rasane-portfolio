@@ -3,10 +3,6 @@ import { motion } from 'framer-motion'
 import { MdArrowOutward } from 'react-icons/md'
 
 const Work = () => {
-  const handleWebonacciClick = () => {
-    window.open('https://www.webonacci.in/', '_blank')
-  }
-
   return (
     <motion.section
       className="pd-20"
@@ -39,16 +35,18 @@ const Work = () => {
                 <p className="text-sm text-white/80">{experience.duration}</p>
               </div>
 
-              {/* Webonacci Website Button */}
-              <motion.button
-                onClick={handleWebonacciClick}
-                className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm font-medium backdrop-blur-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Visit Website
-                <MdArrowOutward className="text-xs" />
-              </motion.button>
+              {/* Website Button - only shows if experience has a website property */}
+              {experience.website && (
+                <motion.button
+                  onClick={() => window.open(experience.website, '_blank')}
+                  className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm font-medium backdrop-blur-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Visit Website
+                  <MdArrowOutward className="text-xs" />
+                </motion.button>
+              )}
             </div>
 
             {/* Description Points */}
